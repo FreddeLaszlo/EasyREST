@@ -1,8 +1,4 @@
 # Introduction
-<style>
-	figcaption { font-style: italic; font-size: small; }
-	.tick { color: green; }
-</style>
 
 A simple project to define RESTful API endpoints via a graphical user interface and, output boilerplate code in a variety of languages. The purpose is to enable quick design and implementation.
 
@@ -58,6 +54,7 @@ As projects go, the model is simple. Figure 1 shows the project split into two m
 	<img src=media/ad51a8d5c61d0149b836062b448ec5c6.png alt="Figure 1 - Project model.">
 	<figcaption>Figure 1 - Project model.</figcaption>
 </figure>
+
 
 # License
 

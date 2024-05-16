@@ -65,14 +65,17 @@ In general, any person can download and use this project. Please see the license
 	<img src=media/0ff0cecce8666bd39e5245e51f35722a.png alt="Figure 2 - Add a path from root is simple.">
 	<figcaption>Figure 2 - Add a path from root is simple.</figcaption>
 </figure>
+
 <figure>
 	<img src=media/db29c2093d0ab1e707382b1ef764d586.png alt="Figure 3 - Add a new path that shares another is equally simple.">
 	<figcaption>Figure 3 - Add a new path that shares another is equally simple.</figcaption>
 </figure>
+
 <figure>
 	<img src=media/0540681fb1ead32a3c43de22355714b2.png alt="Figure 4 - A node path that diverges.">
 	<figcaption>Figure 4 - A node path that diverges.</figcaption>
 </figure>
+
 <figure>
 	<img src=media/aa957a7e93178cfaa0f23719db5c075a.png alt="Figure 5 - Each node is clickable, allowing detailed configuration.">
 	<img src=media/27e774dff09f801e3532bb51e3b76c35.png alt="Figure 5 - Each node is clickable, allowing detailed configuration.">

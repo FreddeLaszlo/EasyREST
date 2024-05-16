@@ -1,0 +1,19 @@
+
+<!-- Node design, enure rectangles are in background -->
+<!-- accept for last click rect, that is the top layer -->
+<g class="item-REST" id="" list="0" position="0">
+	<!-- Title area  -->
+	<rect class="titleRect" width="100" height="20" />
+	<text class="title" x="0" y="0"></text>
+	
+	<!-- Description area-->
+	<rect class="descriptionRect" y="20" width="100" height="50" />
+	<text class="description" x="0" y="30"></text>
+
+	<!-- Information area-->
+	<rect class="infoRect" width="100" y="50" height="60"></rect>
+	<text class="info" x ="0" y="50"></text>
+
+	<!-- Click area, covers node in transparent clickable area-->
+	<rect class="clickRect" width="100" height="120"></rect>
+</g>

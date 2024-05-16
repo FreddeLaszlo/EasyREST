@@ -1,0 +1,100 @@
+body {
+    padding: 0;
+    margin: 0;
+    user-select: none;
+}
+
+rect {
+    stroke: black;
+    stroke-width: 1px;
+}
+
+line {
+    stroke: black;
+    stroke-width: 1px;
+}
+
+#project-title {
+    padding: 10px 0 5px 10px;
+    font-size: 24px;
+    text-anchor: start;
+    font-weight: bold;
+}
+
+#project-description {
+    padding: 5px 0 5px 10px;
+    font-size: 20px;
+}
+
+#project-port {
+    padding: 5px 0 20px 10px;
+    font-size: 16px;
+}
+
+.title {
+    padding: 5px 20px 5px 20px;
+    text-anchor: middle;
+    fill: darkcyan;
+    stroke: none;
+    font-weight: bold;
+    font-size: 15px;
+ }
+
+.id {
+    font-style: italic;
+}
+
+.titleRect {
+    fill: lightgray;
+}
+
+.description {
+    padding: 5px 10px;
+    text-anchor: start;
+    stroke: none;
+    fill: black;
+    font-size: 12px;
+    max-width: 40ch; /** used as max characters per line - use ch units only*/
+}
+
+.descriptionRect {
+    fill: lightblue;
+}
+
+.info {
+    padding: 4px 4px;
+    font-size: 12px;
+}
+
+.expects {
+    font-size: 11px;
+    fill: white;
+}
+
+.infoRect {
+    fill:lightslategrey;
+}
+
+.clickRect {
+    fill: transparent;
+    stroke: none;
+}
+
+
+
+g {
+    padding: 20px 20px 20px 20px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 12px;
+    stroke: none;
+    fill: black;
+}
+
+g:hover rect{
+    stroke: green;
+    cursor: pointer;
+}
+
+g:hover text {
+    fill: green;
+}

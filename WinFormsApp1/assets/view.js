@@ -25,7 +25,7 @@ window.chrome.webview.addEventListener('message', event => {
 
 /**
  * Dispatches events from main c# program
- * @param {string} data - The json encoded string
+ * @param {string} data -  The json encoded string 
  */
 function WriteDataFromCsharp(data) {
     const obj = JSON.parse(data);

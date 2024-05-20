@@ -45,7 +45,7 @@ function WriteDataFromCsharp(data) {
             // New list of nodes
             gr.removeAll();
             getAsset('REST.svg', function (data) {
-                gr.ProjectTitle = obj.params.Title;
+                gr.ProjectTitle = obj.params.Title; //Title
                 gr.ProjectDescription = obj.params.Description;
                 gr.ProjectPort = obj.params.Port;
                 let list = obj.params.Items;

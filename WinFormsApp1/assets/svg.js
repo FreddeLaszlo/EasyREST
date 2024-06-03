@@ -21,7 +21,7 @@ class SVG {
         if (elem !== null) {
             // svg is emebedded inside object element
             let svgObject = document.querySelector(elem);
-            this.#svg = svgObject.contentDocument.getElementById(id);
+            this.#svg = svgObject.contentDocument.getElementById(id); 
         } else {
             this.#svg = document.getElementById(id);
         }
@@ -328,6 +328,9 @@ class SVG {
             this.alignItemContent(nodes[i].id);
         }
 
+        let maxRight = 0;
+        let maxBottom = 0;
+
         // use map to determine each node placement
         // and draw lines between connected nodes
         for (let row = 0; row < map.length; row++) {
@@ -361,6 +364,7 @@ class SVG {
                         );
                     }
                 }
+                maxRight = maxRight < (pos.x + pos.width + style.paddingRight) ? (pos.x + pos.width + style.paddingRight) : maxRight;
                 pos.y = startY;
                 map[row][col].pos = pos;
                 // Calculate y 
@@ -370,6 +374,10 @@ class SVG {
             }
             startY += maxHeight + style.paddingTop + style.paddingBottom;
         }
+        maxBottom = startY;
+        // Set width and height of svg component
+        document.getElementById("graph").style.width = "" + (maxRight + 40) + "px";
+        document.getElementById("graph").style.height = "" + (maxBottom + 20) + "px";
     }
 
     /**

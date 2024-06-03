@@ -1,0 +1,20 @@
+#CORS options (allow from requests from anywhere
+#Header Set Access-Control-Allow-Origin "*"
+
+
+# Fix for Apache AUTHORIZATION http header as it is stripped by default for
+# security and should be enabled explicitly when needed
+#SetEnvIf Authorization .+ HTTP_AUTHORIZATION=$0
+
+# Do not allow file listing if a requested page could not be found
+Options -Indexes
+ 
+#ErrorDocument 404 /audiogram/v1/controller/not_authorised.php
+
+# Turn on the rewriting engine
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_FILENAME} !-f
+# Send all requests to default versioned API
+#RewriteRule . /rest/v2/phpinfo.php [END]
+RewriteRule . /rest/v1/controller/controller.php [END]

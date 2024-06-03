@@ -145,7 +145,8 @@ namespace EasyREST
                     // Redraw the nodes
                     string json = JsonSerializer.Serialize(lstItems);
                     webView2.CoreWebView2.PostWebMessageAsString("{\"command\":\"list\", \"params\":" + json + "}");
-                } catch (Exception ex)
+                }
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
@@ -270,6 +271,13 @@ namespace EasyREST
                 webView2.CoreWebView2.PostWebMessageAsString("{\"command\":\"list\", \"params\":" + json + "}");
             }
             dlg.Dispose();
+        }
+
+        private void pHPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            php output = new php();
+            output.ExportCode(lstItems);
+            MessageBox.Show("Done!");
         }
     }
 }

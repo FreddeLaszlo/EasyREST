@@ -45,9 +45,9 @@
             cToolStripMenuItem1 = new ToolStripMenuItem();
             toolStripMenuItem2 = new ToolStripSeparator();
             AddPathToolStripMenuItem = new ToolStripMenuItem();
-            lblLoading = new Label();
             projectToolStripMenuItem = new ToolStripMenuItem();
             projectOptionsToolStripMenuItem = new ToolStripMenuItem();
+            lblLoading = new Label();
             ((System.ComponentModel.ISupportInitialize)webView2).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -122,37 +122,38 @@
             // 
             outputToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { pHPToolStripMenuItem, djangoToolStripMenuItem, rustToolStripMenuItem, cToolStripMenuItem, cToolStripMenuItem1 });
             outputToolStripMenuItem.Name = "outputToolStripMenuItem";
-            outputToolStripMenuItem.Size = new Size(112, 22);
+            outputToolStripMenuItem.Size = new Size(180, 22);
             outputToolStripMenuItem.Text = "&Output";
             // 
             // pHPToolStripMenuItem
             // 
             pHPToolStripMenuItem.Name = "pHPToolStripMenuItem";
-            pHPToolStripMenuItem.Size = new Size(112, 22);
+            pHPToolStripMenuItem.Size = new Size(180, 22);
             pHPToolStripMenuItem.Text = "PHP";
+            pHPToolStripMenuItem.Click += pHPToolStripMenuItem_Click;
             // 
             // djangoToolStripMenuItem
             // 
             djangoToolStripMenuItem.Name = "djangoToolStripMenuItem";
-            djangoToolStripMenuItem.Size = new Size(112, 22);
+            djangoToolStripMenuItem.Size = new Size(180, 22);
             djangoToolStripMenuItem.Text = "Django";
             // 
             // rustToolStripMenuItem
             // 
             rustToolStripMenuItem.Name = "rustToolStripMenuItem";
-            rustToolStripMenuItem.Size = new Size(112, 22);
+            rustToolStripMenuItem.Size = new Size(180, 22);
             rustToolStripMenuItem.Text = "Rust";
             // 
             // cToolStripMenuItem
             // 
             cToolStripMenuItem.Name = "cToolStripMenuItem";
-            cToolStripMenuItem.Size = new Size(112, 22);
+            cToolStripMenuItem.Size = new Size(180, 22);
             cToolStripMenuItem.Text = "C++";
             // 
             // cToolStripMenuItem1
             // 
             cToolStripMenuItem1.Name = "cToolStripMenuItem1";
-            cToolStripMenuItem1.Size = new Size(112, 22);
+            cToolStripMenuItem1.Size = new Size(180, 22);
             cToolStripMenuItem1.Text = "C";
             // 
             // toolStripMenuItem2
@@ -167,16 +168,6 @@
             AddPathToolStripMenuItem.Text = "&Add Path";
             AddPathToolStripMenuItem.Click += AddPathToolStripMenuItem_Click;
             // 
-            // lblLoading
-            // 
-            lblLoading.AutoSize = true;
-            lblLoading.Font = new Font("Segoe UI", 20F);
-            lblLoading.Location = new Point(481, 297);
-            lblLoading.Name = "lblLoading";
-            lblLoading.Size = new Size(132, 37);
-            lblLoading.TabIndex = 3;
-            lblLoading.Text = "Loading...";
-            // 
             // projectToolStripMenuItem
             // 
             projectToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { projectOptionsToolStripMenuItem });
@@ -190,6 +181,16 @@
             projectOptionsToolStripMenuItem.Size = new Size(180, 22);
             projectOptionsToolStripMenuItem.Text = "Options";
             projectOptionsToolStripMenuItem.Click += projectOptionsToolStripMenuItem_Click;
+            // 
+            // lblLoading
+            // 
+            lblLoading.AutoSize = true;
+            lblLoading.Font = new Font("Segoe UI", 20F);
+            lblLoading.Location = new Point(481, 297);
+            lblLoading.Name = "lblLoading";
+            lblLoading.Size = new Size(132, 37);
+            lblLoading.TabIndex = 3;
+            lblLoading.Text = "Loading...";
             // 
             // frmMain
             // 

@@ -1,13 +1,13 @@
 <?php
 /**
- * Description of bookshops_2
+ * Description of {nodeclass}
  *
  * Auto generated for endpoint
  * {endpoint}
  */
 class {nodeclass} {
 
-    public function getResult($method, $node) {
+    public function getResult($method, $node, $params) {
         switch($method) {
             {switch}
             default:

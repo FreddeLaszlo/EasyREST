@@ -7,7 +7,6 @@
  * 
  * Copyright (c) Fred de Laszlo, 2024
  * 
- * Setup file
  */
 
 /**
@@ -41,7 +40,7 @@ class Request {
     public function getNode() {
         return $this->_node;
     }
-    
+
     public function getAuthenticate() {
         return $this->_authenticate;
     }
@@ -49,6 +48,7 @@ class Request {
     function __construct() {
 
         $this->_method = filter_input(INPUT_SERVER, "REQUEST_METHOD");
+        $this->checkMethod();
         $uri = filter_input(INPUT_SERVER, 'REQUEST_URI');
         $path = trim(explode('?', $uri)[0], '/');
         $script = trim(filter_input(INPUT_SERVER, 'SCRIPT_NAME'), '/');
@@ -60,16 +60,28 @@ class Request {
         }
 
         try {
-            require_once '../model/nodes.php';
-        } catch (ErrorException) {
-            $this->nodes = array();
+            require_once '../model/paths/nodes.php';
+        } catch (ErrorException $ex) {
+            $response = new Response(Response::httpResponseInternalServerError, false);
+            $response->addMessage('Could not load node details');
+            $response->send();
+            exit;
         }
         $this->_node = $this->getNodeFromPath($path);
         $this->authenticate();
     }
-    
+
+    private function checkMethod() {
+        if ($this->_method !== 'GET' 
+                && $this->_method !== 'POST' 
+                && $this->_method != 'PATCH' 
+                && $this->_method != 'DELETE') {
+            throw new ErrorException("Method '{$this->_method}' not allowed.");
+        }
+    }
+
     private function authenticate() {
-        if($this->_node !== null) {
+        if ($this->_node !== null) {
             switch ($this->_method) {
                 case 'GET':
                     $this->_authenticate = $this->_node['UseGETAuthorisation'] && $this->_node['UseGET'];
@@ -94,9 +106,10 @@ class Request {
         try {
             $currentnode = $this->findNodes()[0];  // Only one root should be returned
         } catch (ErrorException) {
-            $currentnode = array();
+            $currentnode = [];
         }
         if ($path === '') {
+            $currentnode['parameters'] = [];
             return $currentnode;
         }
         $explodedPath = explode('/', $path);
@@ -104,9 +117,8 @@ class Request {
         for ($i = 0; $i < count($explodedPath); $i++) {
             $foundnodes = $this->findNodes($currentnode['ID']);
             [$id, $noun] = $this->matchNode($foundnodes, $explodedPath[$i]);
-            //Helpers::debug_to_console($id);
             if (!$id && !$noun) {
-                return [];
+                throw new ErrorException('No end point found.');
             }
             if ($id && $i < count($explodedPath) - 1) {
                 $parameters["$previousNoun}_id"] = $explodedPath[$i];

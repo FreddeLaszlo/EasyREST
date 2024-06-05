@@ -64,7 +64,13 @@ class Response {
     }
 
     public function addMessage($message) {
-        $this->_messages[] = $message;
+        if (is_array($message)) {
+            foreach ($message as $msg) {
+                $this->_messages[] = $msg;
+            }
+        } else {
+            $this->_messages[] = $message;
+        }
     }
 
     public function setData($data) {

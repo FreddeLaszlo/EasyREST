@@ -27,7 +27,7 @@ namespace EasyREST
         {
             // Set a variable to the Documents path.
             // string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string docPath = _base + "v1\\model";
+            string docPath = _base + "v1\\model\\paths";
             using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "nodes.php")))
             {
                 outputFile.WriteLine("<?php");
@@ -113,7 +113,7 @@ namespace EasyREST
                 classtemplate = FillMethods(node, classtemplate, nodepath);
 
                 // Save the file
-                string docPath = _base + $"v1\\model\\{filename}";
+                string docPath = _base + $"v1\\model\\paths\\{filename}";
                 File.WriteAllText(docPath, classtemplate);
             }
         }
@@ -174,10 +174,14 @@ namespace EasyREST
             if (node.UseGET == true)
             {
                 _case += "case 'GET':\n" +
-                    "                $this->processGET($node);\n" +
+                    "                $this->processGET($node, $params);\n" +
                     "                break;";
-                _getFunc = $"private function processGET($node) {{\n" +
+                _getFunc = $"private function processGET($node, $params) {{\n" +
                     $"        $res = new Response(Response::httpResponseOK, true, \"Reached GET method for /{endpoint}\");\n" +
+                    $"        $res->addMessage(\"The following parameters were recieved:\");\n" +
+                    $"        foreach ($params as $key => $value) {{\n" +
+                    $"            $res->addMessage(\"$key: $value\");\n" +
+                    $"        }}\n" +
                     $"        $res->send();\n" +
                     $"    }}";
             }
@@ -185,10 +189,14 @@ namespace EasyREST
             if (node.UsePOST == true)
             {
                 _case += "case 'POST':\n" +
-                    "                $this->processPOST($node);\n" +
+                    "                $this->processPOST($node, $params);\n" +
                     "                break;";
-                _postFunc = $"private function processPOST($node) {{\n" +
+                _postFunc = $"private function processPOST($node, $params) {{\n" +
                     $"        $res = new Response(Response::httpResponseOK, true, \"Reached POST method for /{endpoint}\");\n" +
+                    $"        $res->addMessage(\"The following parameters were recieved:\");\n" +
+                    $"        foreach ($params as $key => $value) {{\n" +
+                    $"            $res->addMessage(\"$key: $value\");\n" +
+                    $"        }}\n" +
                     $"        $res->send();\n" +
                     $"    }}";
             }
@@ -196,10 +204,14 @@ namespace EasyREST
             if (node.UsePATCH == true)
             {
                 _case += "case 'PATCH':\n" +
-                    "                $this->processPATCH($node);\n" +
+                    "                $this->processPATCH($node, $params);\n" +
                     "                break;";
-                _patchFunc = $"private function processPATCH($node) {{\n" +
+                _patchFunc = $"private function processPATCH($node, $params) {{\n" +
                     $"        $res = new Response(Response::httpResponseOK, true, \"Reached PATCH method for /{endpoint}\");\n" +
+                    $"        $res->addMessage(\"The following parameters were recieved:\");\n" +
+                    $"        foreach ($params as $key => $value) {{\n" +
+                    $"            $res->addMessage(\"$key: $value\");\n" +
+                    $"        }}\n" +
                     $"        $res->send();\n" +
                     $"    }}";
             }
@@ -207,10 +219,14 @@ namespace EasyREST
             
             {
                 _case += "case 'DELETE':\n" +
-                    "                $this->processDELETE($node);\n" +
+                    "                $this->processDELETE($node, $params);\n" +
                     "                break;";
-                _deleteFunc = $"private function processDELETE($node) {{\n" +
+                _deleteFunc = $"private function processDELETE($node, $params) {{\n" +
                     $"        $res = new Response(Response::httpResponseOK, true, \"Reached DELETE method for /{endpoint}\");\n" +
+                    $"        $res->addMessage(\"The following parameters were recieved:\");\n" +
+                    $"        foreach ($params as $key => $value) {{\n" +
+                    $"            $res->addMessage(\"$key: $value\");\n" +
+                    $"        }}\n" +
                     $"        $res->send();\n" +
                     $"    }}";
             }
